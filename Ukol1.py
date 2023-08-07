@@ -13,8 +13,8 @@ Slovníky (Dictionaries)
 Množiny (Sets)
 Byte Arrays
 Třídy (Classes) - pokud jsou definovány uživatelem, mohou být také měněny
-Nezměnitelné (immutable) vestavěné typy v Pythonu:
 
+Nezměnitelné (immutable) vestavěné typy v Pythonu:
 Celá čísla (Integers)
 Desetinná čísla (Floats)
 Řetězce (Strings)
