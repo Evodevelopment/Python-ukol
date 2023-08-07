@@ -24,3 +24,24 @@ odd_generator = generate_odd_numbers()
 first_10_odd_numbers = [next(odd_generator) for _ in range(10)]
 first_10_odd_numbers
 
+
+#Write a regular expression, that matches protocol, IPv4 address, and port from the string below. There can be any protocol, IPv4 address, and any port on the input. Protocol and port are optional parts and can be missing. For the string below, it must match groups “protocol=udp”, “ipv4=127.0.0.1”, “port=53” :
+Napište regulární výraz, který nalezne protokol, IPv4 adresu a port z řetězce níže.
+Na vstupu se může vyskytnout libovolný protokol, IPv4 adresa a libovolný port.
+Protokol a port jsou volitelné části a nemusí se vyskytnout. V řetězci níže musí regulární výraz najít skupiny “protocol=udp”, “ipv4=127.0.0.1”, “port=53”:
+ “udp://127.0.0.1:53”
+
+import re
+
+input_string = "udp://127.0.0.1:53"
+pattern = r"(?:(protocol=[a-zA-Z]+)://)?(ipv4=\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})(?::(port=\d+))?"
+
+matches = re.search(pattern, input_string)
+
+if matches:
+    matched_groups = matches.groups()
+else:
+    matched_groups = None
+
+matched_groups
+
