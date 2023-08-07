@@ -354,3 +354,5 @@ def my_function():
 
 V tomto příkladu my_function bude nejprve dekorována decorator3, poté decorator2 a nakonec decorator1. 
 Můžete si to představit tak, že dekorátor obalí funkci vrstvou za vrstvou, podobně jako cibule.
+
+
