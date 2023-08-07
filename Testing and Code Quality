@@ -1,1 +1,32 @@
+#Jaký je rozdíl mezi jednotkovým a integračním testováním?
 
+Jednotkové testování a integrační testování jsou dvě důležité fáze v procesu testování softwaru, ale každá se zaměřuje na různé aspekty softwarového systému. Zde jsou hlavní rozdíly mezi nimi:
+
+Účel:
+
+Jednotkové testování: Zaměřuje se na testování jednotlivých komponent nebo modulů softwaru izolovaně od zbytku systému. 
+Cílem je ověřit, zda každá komponenta funguje tak, jak by měla.
+Integrační testování: Ověřuje, jak různé komponenty nebo moduly softwaru spolupracují. 
+Cílem je identifikovat problémy, které mohou vzniknout při integraci jednotlivých částí systému.
+Rozsah:
+
+Jednotkové testování: Omezeno na jednotlivou komponentu nebo funkci.
+Integrační testování: Zaměřuje se na interakce mezi různými komponentami nebo systémy.
+Izolace:
+
+Jednotkové testování: Komponenty jsou testovány izolovaně; závislosti mohou být nahrazeny mock objekty.
+Integrační testování: Skutečné instance komponent jsou testovány v kombinaci, mock objekty nejsou obvykle používány.
+Nástroje a rámce:
+
+Jednotkové testování: Existuje mnoho nástrojů a rámců speciálně určených pro jednotkové testování (např. unittest v Pythonu).
+Integrační testování: Může vyžadovat specializované nástroje nebo systémy k simulaci reálného prostředí, ve kterém bude software 
+fungovat.
+Časování:
+
+Jednotkové testování: Obvykle se provádí první, ještě před integračním testováním, a je součástí průběžného vývoje.
+Integrační testování: Provádí se po jednotkovém testování, když jsou jednotlivé komponenty integrovány dohromady.
+Typy problémů, které odhalují:
+
+Jednotkové testování: Chyby v logice, funkčnostech nebo chování jednotlivých komponent.
+Integrační testování: Problémy s datovými formáty, duplicitními procesy, ztracenými daty nebo problémy s komunikací mezi komponentami.
+Zatímco jednotkové testování je nezbytné pro ověření správnosti jednotlivých komponent, integrační testování je důležité pro zajištění hladkého provozu celého systému, když jsou komponenty kombinovány. Obě fáze testování jsou nezbytné pro vývoj kvalitního softwaru.
