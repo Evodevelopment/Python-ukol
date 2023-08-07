@@ -314,3 +314,43 @@ Vytvořením vlastních výjimek, jako je NedostatekProstředkůVýjimka, může
 
 Vytvořením vlastních výjimek, jako je NedostatekProstředkůVýjimka, můžete poskytnout podrobnější informace o chybě a usnadnit ostatním 
 částem softwaru (nebo jiným vývojářům) pochopení a zacházení se specifickými chybovými scénáři.
+
+# • What are decorators? Please provide at least one example of their usage. Is it possible to stack multiple different decorators?
+Co jsou to dekorátory? Vymenujte alespoň jeden příklad jejich použití. Je možné aplikovat více dekorátorů najednou?
+
+Dekorátory jsou v Pythonu mocný nástroj, který umožňuje modifikovat nebo rozšiřovat funkčnost funkcí či tříd bez nutnosti měnit jejich kód. Dekorátor je ve své podstatě funkce, která přijímá funkci (nebo třídu) jako argument a vrací novou funkci (nebo třídu) s rozšířenou nebo modifikovanou funkcionalitou.
+
+Příklad dekorátoru:
+Představme si, že chceme měřit dobu běhu našich funkcí:
+import time
+
+def timer_decorator(func):
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        print(f"Funkce {func.__name__} běžela {end_time - start_time} sekund.")
+        return result
+    return wrapper
+
+@timer_decorator
+def example_function():
+    time.sleep(2)
+    print("Funkce dokončena.")
+
+example_function()
+
+#Když spustíte výše uvedený kód, funkce example_function bude "dekorována" funkcí timer_decorator, což způsobí, že při jejím volání 
+se vypíše doba jejího běhu.
+
+Aplikace více dekorátorů:
+Ano, je možné aplikovat více dekorátorů na jednu funkci. Dekorátory se aplikují ve pořadí od nejspodnějšího k nejvyššímu.
+
+@decorator1
+@decorator2
+@decorator3
+def my_function():
+    pass
+
+V tomto příkladu my_function bude nejprve dekorována decorator3, poté decorator2 a nakonec decorator1. 
+Můžete si to představit tak, že dekorátor obalí funkci vrstvou za vrstvou, podobně jako cibule.
