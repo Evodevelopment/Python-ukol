@@ -102,5 +102,78 @@ pro síťové I/O operace, která používá greenlet pro poskytnutí vysokoúro
 
 Tyto nástroje lze použít samostatně nebo kombinovat, v závislosti na konkrétních potřebách vaší aplikace.
 
+#Design Patterns, Python Idioms, and OOP
+• Briefly describe singleton design pattern. Provide at least one example of practical usage.
+Stručně popište návrhový vzor singleton. Uveďte alespoň 1 příklad praktického využití.
+
+Singleton je návrhový vzor, který omezuje vytvoření třídy na jeden jediný objekt. 
+Tento vzor se používá, když je třeba, aby třída měla pouze jednu instanci s globálním bodem přístupu.
+
+Singleton je často používán v situacích, kde je potřeba sdílení zdrojů nebo informací:
+
+Připojení k databázi: Singleton může být užitečný, pokud chcete omezit počet připojení k databázi. 
+Můžete vytvořit třídu Singleton, která spravuje všechna připojení k databázi, takže se vytvoří pouze jedno připojení, 
+které bude sdíleno mezi všemi objekty, které potřebují přistupovat k databázi.
+
+Konfigurační soubory: Pokud vaše aplikace používá konfigurační soubor, může být užitečné vytvořit třídu Singleton, 
+která načte konfigurační soubor a poskytuje globální přístup k těmto konfiguračním datům. 
+To znamená, že konfigurační soubor se načte pouze jednou, a ne pokaždé, když některý z objektů potřebuje přistupovat k těmto datům.
+
+Zde je jednoduchý příklad, jak lze implementovat Singleton v Pythonu:
+class Singleton:
+   __instance = None
+
+   @staticmethod 
+   def getInstance():
+      """ Static access method. """
+      if Singleton.__instance == None:
+         Singleton()
+      return Singleton.__instance
+
+   def __init__(self):
+      """ Virtually private constructor. """
+      if Singleton.__instance != None:
+         raise Exception("This class is a singleton!")
+      else:
+         Singleton.__instance = self
+
+#Tento kód vytvoří třídu Singleton, která omezuje vytvoření více instancí. Pokud se pokusíte vytvořit více instancí, vyvolá se výjimka.
+#Metoda getInstance vám umožní získat přístup k jediné instanci třídy Singleton.
+
+How would you implement an iterator class. What things (e.g. methods) are required?
+Jak by jste implementovali iterator třídu (class)? Co by měla obsahovat (například jaké metody)?
+
+#Iterator je objekt, který umožňuje programátorovi procházet kontejner (například seznam, slovník, n-tici atd.)
+
+Třída Iteratoru v Pythonu musí implementovat dvě metody: metodu __iter__() a metodu __next__().
+
+Metoda __iter__() vrátí objekt iteratoru. Je to také voláno, když je iterace inicializována, například v cyklu for.
+
+Metoda __next__() vrátí další prvek ze sekvence. Když jsou prošlé všechny prvky a __next__() je opět volána, 
+měla by vyvolat výjimku StopIteration, aby signalizovala, že byly prošlé všechny prvky.
+
+Následuje jednoduchý příklad implementace iterátoru v Pythonu:
+class MyIterator:
+
+    def __init__(self, max_val):
+        self.max_val = max_val
+        self.index = 0
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.index < self.max_val:
+            result = self.index
+            self.index += 1
+            return result
+        else:
+            raise StopIteration
+
+#V tomto příkladě MyIterator vrací postupně čísla od 0 do max_val - 1. Když dosáhne max_val, vyvolá výjimku StopIteration, 
+#čímž signalizuje konec iterace.
+
+
+
 
 
