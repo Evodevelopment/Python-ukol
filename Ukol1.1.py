@@ -196,4 +196,121 @@ I když můžete použít chráněné a privátní atributy, Python nesnaží sk
 Místo toho Python spoléhá na konvenci "jsme všichni dospělí zde" 
 a očekává se, že vývojáři budou respektovat hranice nastavené těmito konvencemi.
 
+# • What are context managers and when would you use it? Co jsou to context managers a jak byste je použili?
 
+Context managers jsou v Pythonu mechanismy, které umožňují správně a konzistentně alokovat a dealokovat zdroje. 
+Nejběžnějším použitím context managerů je při práci se soubory, databázovými připojeními nebo zámky (locks).
+
+V Pythonu je context manager obvykle používán s příkazem with. Klíčovým rysem context managerů je, že automaticky zajistí, 
+aby byly zdroje správně uvolněny po opuštění bloku with.
+
+Příklad:
+Když pracujete se soubory, můžete použít context manager k otevření souboru, 
+čtení nebo zápisu a následně k automatickému zavření souboru po dokončení operace:
+
+#python
+with open('myfile.txt', 'r') as f:
+    content = f.read()
+# Soubor je nyní automaticky uzavřen
+Context manager zajistí, že soubor je uzavřen správně, i když dojde k výjimce během zpracování.
+
+Jak vytvořit vlastní context manager:
+Můžete vytvořit vlastní context manager implementací dvou metod: __enter__() a __exit__().
+
+__enter__: Tato metoda je volána při vstupu do bloku with. Může vrátit objekt, který je používán v rámci bloku.
+
+__exit__: Tato metoda je volána při opuštění bloku with. Zajistí uvolnění zdrojů a může také řešit výjimky, pokud k nim došlo.
+
+Příklad vlastního context manageru:
+
+#python
+class MyContextManager:
+
+    def __enter__(self):
+        # Vytvoření a vrácení zdroje
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        # Uvolnění zdroje
+        pass
+
+with MyContextManager() as cm:
+    # Práce se zdrojem
+    pass
+Mimo třídní implementace můžete vytvořit context manager také pomocí generátorů a dekorátoru contextlib.contextmanager z modulu contextlib.
+
+# • When would you implement a custom exception? Kdy byste implementovali vlastní výjimku?
+
+
+Implementing a custom exception is useful in various situations to make your code more readable, maintainable, and user-friendly. 
+Here are some reasons and scenarios when you might want to implement a custom exception:
+
+Domain-Specific Errors: When you're developing domain-specific software, the built-in exceptions might not convey the exact nature 
+of the problem. Custom exceptions can help capture specific error conditions related to your domain.
+
+Better Error Messages: Custom exceptions allow you to provide more detailed and specific error messages compared to generic built-in 
+exceptions.
+
+#Hierarchical Exceptions: You can create a hierarchy of exceptions to represent errors at different levels of granularity. 
+This structure allows callers to catch exceptions at various levels and handle them differently if needed.
+
+Third-party Library Limitations: If you're working with third-party libraries that don't raise specific exceptions for certain error 
+conditions, you can create your own exceptions to handle those cases.
+
+#Consistent Error Handling: By defining custom exceptions, you can ensure that errors in your application are handled consistently. 
+This approach is particularly useful in larger projects or libraries that are used by multiple applications.
+
+Logging and Monitoring: Custom exceptions can be tailored to include additional information that might be useful for logging or monitoring. 
+For instance, you could include debug information, timestamps, or other metadata in your custom exception classes.
+
+Example of a Custom Exception:
+Suppose you're building a banking application. You might define a custom exception for when a withdrawal exceeds the available balance:
+
+#python
+Copy code
+class InsufficientFundsException(Exception):
+    def __init__(self, account, amount_requested, balance):
+        super().__init__(f"Account {account} does not have sufficient funds. "
+                         f"Requested: {amount_requested}, Available: {balance}")
+        self.account = account
+        self.amount_requested = amount_requested
+        self.balance = balance
+By creating custom exceptions like InsufficientFundsException, you can provide more detailed information about the error and make it 
+easier for other parts of the software (or other developers) to understand and handle specific error scenarios.
+
+Implementace vlastní výjimky je užitečná v různých situacích, aby váš kód byl čitelnější, udržitelnější a uživatelsky přívětivější. 
+de je několik důvodů a scénářů, kdy byste mohli chtít implementovat vlastní výjimku:
+
+Specifické chyby v oboru: Pokud vyvíjíte software specifický pro určitý obor, vestavěné výjimky nemusí přesně vyjádřit povahu problému. 
+Vlastní výjimky mohou pomoci zachytit specifické chybové stavy související s vaším oborem.
+
+Lepší chybové zprávy: Vlastní výjimky vám umožňují poskytnout podrobnější a specifičtější chybové zprávy ve srovnání 
+s obecnými vestavěnými výjimkami.
+
+Hierarchické výjimky: Můžete vytvořit hierarchii výjimek, které reprezentují chyby na různých úrovních granularitu. 
+Tato struktura umožňuje zachytávat výjimky na různých úrovních a případně je různě zpracovávat.
+
+Omezení knihovny třetích stran: Pokud pracujete s knihovnami třetích stran, které nevyvolávají specifické výjimky pro určité chybové stavy, 
+můžete vytvořit své vlastní výjimky pro tyto případy.
+
+Konsekventní zacházení s chybami: Definováním vlastních výjimek můžete zajistit, že chyby ve vaší aplikaci budou konzistentně zpracovány.
+Tento přístup je obzvláště užitečný ve větších projektech nebo knihovnách, které jsou používány více aplikacemi.
+
+Protokolování a monitorování: Vlastní výjimky mohou být přizpůsobeny tak, aby zahrnovaly další informace, které by mohly být užitečné pro protokolování nebo monitorování. Například byste mohli do svých vlastních tříd výjimek zahrnout ladící informace, časová razítka nebo jiná metadata.
+
+Příklad vlastní výjimky:
+Představte si, že vytváříte bankovní aplikaci. Mohli byste definovat vlastní výjimku pro případ, kdy výběr překročí dostupný zůstatek:
+
+class NedostatekProstředkůVýjimka(Exception):
+    def __init__(self, účet, požadovaná_částka, zůstatek):
+        super().__init__(f"Účet {účet} nemá dostatek prostředků. "
+                         f"Požadováno: {požadovaná_částka}, Dostupné: {zůstatek}")
+        self.účet = účet
+        self.požadovaná_částka = požadovaná_částka
+        self.zůstatek = zůstatek
+
+Vytvořením vlastních výjimek, jako je NedostatekProstředkůVýjimka, můžete poskytnout podrobnější informace o chybě a usnadnit ostatním 
+částem softwaru (nebo jiným vývojářům) pochopení a zacházení se specifickými chybovými scénáři.
+
+Vytvořením vlastních výjimek, jako je NedostatekProstředkůVýjimka, můžete poskytnout podrobnější informace o chybě a usnadnit ostatním 
+částem softwaru (nebo jiným vývojářům) pochopení a zacházení se specifickými chybovými scénáři.
