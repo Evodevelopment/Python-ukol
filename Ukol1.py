@@ -174,11 +174,15 @@ class MyIterator:
 #čímž signalizuje konec iterace.
 
 • What is monkey patching? Co to je monkey patching?
-Monkey patching" je programovací termín, který označuje dynamickou (za běhu) modifikaci tříd nebo modulů v programovacím jazyce, často s cílem přidat, změnit nebo upravit existující funkčnost. Jednoduše řečeno, je to technika, kdy se "zapatchuje" část kódu nebo třídy za běhu programu.
+Monkey patching" je programovací termín, který označuje dynamickou (za běhu) modifikaci tříd nebo modulů v programovacím jazyce, 
+často s cílem přidat, změnit nebo upravit existující funkčnost. Jednoduše řečeno, je to technika, kdy se "zapatchuje" část kódu 
+nebo třídy za běhu programu.
 
-V Pythonu je monkey patching obzvlášť snadné díky jeho dynamické povaze. Můžete například změnit metody třídy nebo přidat nové metody k existující třídě za běhu.
+V Pythonu je monkey patching obzvlášť snadné díky jeho dynamické povaze. Můžete například změnit metody třídy nebo přidat nové metody 
+k existující třídě za běhu.
 
-Přestože monkey patching může být užitečný v některých situacích, může také způsobit problémy s udržitelností a čitelností kódu, protože může být těžké sledovat, kdy a kde byly provedeny změny.
+Přestože monkey patching může být užitečný v některých situacích, může také způsobit problémy s udržitelností a čitelností kódu, 
+protože může být těžké sledovat, kdy a kde byly provedeny změny.
 
 Příklady využití monkey patching:
 
@@ -188,7 +192,8 @@ Mockování v jednotkových testech (např. pro simulaci chování externích sl
 I když má monkey patching své výhody, měl by být používán opatrně a vědomě, abyste předešli potenciálním problémům 
 a nečekanému chování v budoucnosti.
 
-
+#• What is dependency injection and how would you implement it? 
+Co to je dependency injection a jak byste ji implementovali?
 
 
 
