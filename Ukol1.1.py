@@ -39,3 +39,57 @@ je jí instance poskytnuta z vnějšku přes konstruktor.
 
 Existují různé DI frameworky pro Python, které mohou usnadnit a automatizovat injektáž závislostí, 
 např. injector nebo dependency_injector.
+
+
+#• What is the difference between instance, static, and class method? Jaký je rozdíl mezi instanční, statickou a třídní metodou?
+
+V Pythonu můžeme definovat tři různé typy metod v rámci třídy: instanční metody, statické metody a třídní metody. Každá z nich má svůj vlastní účel a způsob, jakým se chová v rámci třídy:
+
+Instanční metoda:
+
+Nejběžnější typ metody.
+
+Přijímá instanci třídy jako svůj první argument (zvykle nazývaný self).
+
+Může měnit stav objektu a také může měnit třídní stav.
+
+#python
+Copy code
+class MyClass:
+    def inst_method(self, arg1, arg2):
+        pass
+Statická metoda:
+
+Deklarována pomocí dekorátoru @staticmethod.
+
+Nepřijímá žádné speciální první argument (ani self ani cls).
+
+Nemůže měnit stav objektu ani třídní stav, protože nemá přístup k žádnému z nich.
+
+Funguje spíše jako běžná funkce, ale je vázána na třídu kvůli své logice.
+
+#python
+Copy code
+class MyClass:
+    @staticmethod
+    def static_method(arg1, arg2):
+        pass
+Třídní metoda:
+
+Deklarována pomocí dekorátoru @classmethod.
+
+Přijímá třídu jako svůj první argument místo instance (zvykle nazývaný cls).
+
+Může měnit třídní stav, ale nemůže měnit stav jednotlivých instancí třídy.
+
+#python
+Copy code
+class MyClass:
+    @classmethod
+    def class_method(cls, arg1, arg2):
+        pass
+Kdy je vhodné použít který typ metody?
+
+Instanční metody jsou vhodné, když potřebujete pracovat s instancemi a jejich atributy.
+Statické metody se používají, když chcete provádět nějakou funkci, která nezávisí na instančních ani třídních atributech.
+Třídní metody se často používají, když potřebujete pracovat s třídními atributy nebo když potřebujete vytvořit alternativní konstruktory.
