@@ -197,3 +197,5 @@ Co to je dependency injection a jak byste ji implementovali?
 
 
 
+
+
