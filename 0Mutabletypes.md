@@ -1,3 +1,27 @@
+Zde jsou čtyři proměnlivé (mutable) vestavěné datové typy v Pythonu:
+
+list (seznam):
+
+Popis: Dynamický seznam hodnot.
+Příklad: fruits = ["jablko", "banán", "čerešně"]
+Využití: Ukládání kolekcí prvků, které je možné upravovat (přidávat, odebírat, měnit).
+dict (slovník):
+
+Popis: Kolekce klíč-hodnota.
+Příklad: person = {"jméno": "Jan", "věk": 30}
+Využití: Ukládání dat v párech klíč-hodnota, kde klíče jsou jedinečné.
+set (množina):
+
+Popis: Kolekce unikátních hodnot.
+Příklad: colors = {"červená", "modrá", "zelená"}
+Využití: Ukládání unikátních hodnot a provádění množinových operací, jako je sjednocení, průnik atd.
+bytearray:
+
+Popis: Seznam bytů.
+Příklad: arr = bytearray([1, 2, 3, 4])
+Využití: Pro práci s bytovými daty, která je možné měnit.
+Tyto typy jsou "mutable", což znamená, že je možné je měnit po jejich vytvoření, na rozdíl od "immutable" typů, jako jsou int, float, str a tuple, které nemohou být změněny po vytvoření.
+
 V Pythonu existuje mnoho vestavěných datových typů. Zde je čtyři z nich s jejich základním využitím:
 
 1. **int (celé číslo)**:
