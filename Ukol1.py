@@ -1,4 +1,5 @@
 #Mutable / Immutable
+
 # • Name at least three mutable and immutable built-in types.
 #   Vyjmenuj alespoň tři “proměnlivé” (mutable) a “nezměnitelné” (immutable) vestavěné (built-in) typy.
 
