@@ -39,7 +39,6 @@ Will the value of this argument be changed after calling this function? (See als
 Co se stane, pokud předáte argument do funkce a uvnitř ho změníte? 
 Změní se hodnota tohoto argumentu po zavolání dané funkce? (viz druhý příklad v sekci Code Snippets.)
 
-Reseni:
 #Odpověď na tuto otázku závisí na tom, zda je argument, který předáváte funkci, měnitelný (mutable) nebo neměnitelný (immutable).
 
 #Pokud je argument neměnitelný (jako například číslo, řetězec nebo n-tice), jakoukoli změnu hodnoty tohoto argumentu uvnitř funkce neovlivní hodnotu argumentu mimo funkci. 
