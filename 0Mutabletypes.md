@@ -1,4 +1,4 @@
-Zde jsou čtyři proměnlivé (mutable) vestavěné datové typy v Pythonu:
+Vestavěné datvové typy v Pythonu jsou:
 
 list (seznam):
 
